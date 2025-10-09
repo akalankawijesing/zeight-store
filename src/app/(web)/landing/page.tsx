@@ -1,13 +1,14 @@
 import HeroSlider from "@/components/layout/HeroSlider";
-import SalesCampaignBanner from "@/components/layout/SalesCampaignBanner";
+import ProductRecommendations from "@/components/product/ProductRecommendations";
 
 
 export default async function Home() {
   
   return (
     <>
-    <SalesCampaignBanner/>
+
     <HeroSlider/>
+    <ProductRecommendations/>
     </>
   );
 }

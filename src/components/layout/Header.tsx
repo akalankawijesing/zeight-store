@@ -68,8 +68,19 @@ export function Header({ categorySelector }: HeaderProps) {
     await signOut({ callbackUrl: '/' });
   };
 
+  const AnnouncementBar = () => {
+    return (
+        <div className='w-full bg-black py-2'>
+            <div className='container mx-auto flex items-center justify-center px-8'>
+                <span className='text-center text-sm font-medium tracking-wide text-white'>FREE SHIPPING ON ORDERS OVER $15.00 • FREE RETURNS</span>
+            </div>
+        </div>
+    );
+};
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+         <AnnouncementBar />
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}

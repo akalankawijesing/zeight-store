@@ -135,6 +135,33 @@ declare global {
     userInfo: Tenant | Manager;
     userRole: JsonObject | JsonPrimitive | JsonArray;
   }
+  
+  interface Category {
+    name: string;
+    selected: boolean;
+  }
+
+  interface ColorSwatch {
+    name: string;
+    imageUrl: string;
+    selected: boolean;
+  }
+
+  interface Product {
+    id: string;
+    name: string;
+    brand: string;
+    imageUrl: string;
+    linkUrl: string;
+    currentPrice: string;
+    previousPrice?: string; // Optional if it's a price range
+    priceRange?: string; // For variable pricing
+    savingsEvent: string;
+    isPopular: boolean;
+    rating?: number; // e.g., 4.1
+    reviewCount?: number; // e.g., 154
+    colors?: ColorSwatch[];
+  }
 }
 
 export {};
