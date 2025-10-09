@@ -1,92 +1,123 @@
-import React from "react";
-import ProductCard from "./ProductCard"; 
+// ProductCarousel.tsx (replace your component with this)
+"use client";
 
-interface ProductCarouselProps {
-  products: Product[];
-  currentScroll: number;
-  onNavigate: (direction: 'left' | 'right') => void;
-  isLeftDisabled: boolean;
-  isRightDisabled: boolean;
+import React, { useRef, useEffect, useCallback, useState } from "react";
+import ProductCard from "./ProductCard";
+function ChevronLeft() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M15 18l-6-6 6-6" />
+    </svg>
+  );
 }
 
-const ChevronLeft = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-    <path fill="#191A1B" d="M14.207 17.707a1 1 0 0 0 0-1.414L9.914 12l4.293-4.293a1 1 0 0 0-1.414-1.414l-5 5a1 1 0 0 0 0 1.414l5 5a1 1 0 0 0 1.414 0"></path>
-  </svg>
-);
-
-const ChevronRight = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-    <path fill="#191A1B" d="M9.793 6.293a1 1 0 0 0 0 1.414L14.086 12l-4.293 4.293a1 1 0 1 0 1.414 1.414l5-5a1 1 0 0 0 0-1.414l-5-5a1 1 0 0 0-1.414 0"></path>
-  </svg>
-);
-
-
-const ProductCarousel: React.FC<ProductCarouselProps> = ({
-  products,
-  currentScroll,
-  onNavigate,
-  isLeftDisabled,
-  isRightDisabled,
-}) => {
-
-  const carouselRef = React.useRef<HTMLUListElement>(null);
-
-  // Effect to manually apply transform for carousel effect (simulating a carousel)
-  React.useEffect(() => {
-    if (carouselRef.current) {
-        // Apply scroll/translation position
-        carouselRef.current.style.transform = `translate3d(-${currentScroll}px, 0px, 0px)`;
-    }
-  }, [currentScroll]);
-    
+function ChevronRight() {
   return (
-    <div className="carousel-outer-wrapper relative">
-      <section className="carousel-inner-section relative">
-        {/* Left Navigation Button - Added hover and active effects */}
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M9 6l6 6-6 6" />
+    </svg>
+  );
+}
+
+export default function ProductCarousel({ products }: { products: Product[] }) {
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const updateNav = useCallback(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 8);
+    setCanScrollRight(el.scrollLeft + el.clientWidth + 8 < el.scrollWidth);
+  }, []);
+
+  useEffect(() => {
+    updateNav();
+    const el = scrollerRef.current;
+    if (!el) return;
+    const onScroll = () => updateNav();
+    el.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", updateNav);
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", updateNav);
+    };
+  }, [updateNav]);
+
+  const scrollBy = (dir: "left" | "right") => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    // scroll by viewport-ish amount (80%) so last/first card won't hang out
+    const amount = Math.round(el.clientWidth * 0.8) * (dir === "left" ? -1 : 1);
+    el.scrollBy({ left: amount, behavior: "smooth" });
+  };
+
+  return (
+    <div className="relative w-full h-full">
+      {/* IMPORTANT: clip any overflow (prevents visual bleeding) */}
+      <div className="absolute inset-0 pointer-events-none md:pointer-events-auto flex items-center justify-between px-4 md:px-12 z-20">
         <button
-          className="carousel-nav-btn absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/80 shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hidden md:block hover:bg-white hover:shadow-xl active:scale-95"
-          disabled={isLeftDisabled}
-          aria-label="Swipe Left"
           type="button"
-          onClick={() => onNavigate('left')}
+          onClick={() => scrollBy("left")}
+          disabled={!canScrollLeft}
+          aria-label="Scroll left"
+          className="hidden md:inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/90 shadow-md hover:shadow-lg transition disabled:opacity-40"
         >
           <ChevronLeft />
         </button>
 
-        {/* Product List Container (Handles horizontal scrolling/translation) */}
-        <div className="product-list-container overflow-hidden">
-          <ul
-            ref={carouselRef}
-            className="product-list-track flex space-x-4 transition-transform duration-600 ease-in-out"
-            style={{
-              padding: '0px',
-              position: 'relative',
-              margin: '0px',
-              // Tailwind classes for horizontal scrolling on mobile/small screens (optional fallback)
-              overflowX: 'scroll',
-              scrollSnapType: 'x mandatory',
-            }}
-          >
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </ul>
-        </div>
-
-        {/* Right Navigation Button - Added hover and active effects */}
         <button
-          className="carousel-nav-btn absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/80 shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hidden md:block hover:bg-white hover:shadow-xl active:scale-95"
-          disabled={isRightDisabled}
-          aria-label="Swipe Right"
           type="button"
-          onClick={() => onNavigate('right')}
+          onClick={() => scrollBy("right")}
+          disabled={!canScrollRight}
+          aria-label="Scroll right"
+          className="hidden md:inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/90 shadow-md hover:shadow-lg transition disabled:opacity-40"
         >
           <ChevronRight />
         </button>
-      </section>
+      </div>
+
+      {/* Scroller: note the px-4/md:px-12 padding to inset first/last cards */}
+      <div
+        ref={scrollerRef}
+        tabIndex={0}
+        role="list"
+        aria-label="Products carousel"
+        className="hide-scrollbar w-full h-full overflow-x-auto scroll-smooth snap-x snap-mandatory py-6 px-4 md:px-12"
+        style={{ WebkitOverflowScrolling: "touch" }}
+      >
+        <ul className="flex gap-4 items-start h-full" role="list">
+          {products.map((p) => (
+            <li key={p.id} role="listitem" className="snap-start">
+              <ProductCard product={p} />
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* subtle mobile edge fades so cards don't appear cut off */}
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 md:hidden bg-gradient-to-r from-white/95 to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 md:hidden bg-gradient-to-l from-white/95 to-transparent" />
     </div>
   );
-};
-
-export default ProductCarousel
+}
