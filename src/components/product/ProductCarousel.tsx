@@ -1,4 +1,3 @@
-// ProductCarousel.tsx (replace your component with this)
 "use client";
 
 import React, { useRef, useEffect, useCallback, useState } from "react";

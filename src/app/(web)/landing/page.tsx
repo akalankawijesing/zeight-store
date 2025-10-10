@@ -1,7 +1,10 @@
+import DualHeroSection from "@/components/layout/DualHeroSection";
+import FashionGridSection from "@/components/layout/FashionGridSection";
 import HeroSlider from "@/components/layout/HeroSlider";
 import OfferBoxImage from "@/components/layout/OfferBoxImage";
 import OfferImageText from "@/components/layout/OfferImageText";
 import ProductRecommendations from "@/components/product/ProductRecommendations";
+import TrendingNearYou from "@/components/product/TrendingNearYou";
 
 export default async function Home() {
   return (
@@ -13,6 +16,15 @@ export default async function Home() {
         src="/frendsmans.jpg"
         alt="Makeup offer with 15-20% off on perfumes and nail polish"
       />
+      <TrendingNearYou />
+      <OfferBoxImage
+        src="/Desktop_INTL_take2.webp"
+        width={2880}
+        height={348}
+        alt="Online beauty offer with 15-20% off on perfumes and nail polish"
+      />
+      <FashionGridSection />
+      <DualHeroSection />
     </>
   );
 }

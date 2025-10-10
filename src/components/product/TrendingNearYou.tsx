@@ -119,7 +119,7 @@ const initialProducts: Product[] = [
     reviewCount: 185,
   },
 ];
-export default function ProductRecommendations() {
+export default function TrendingNearYou() {
   const [categories, setCategories] = useState<Category[]>(initialCategories);
   const [products] = useState<Product[]>(initialProducts);
 
@@ -134,7 +134,7 @@ export default function ProductRecommendations() {
       {/* Header + categories */}
       <div className="px-6 md:px-12 pt-8 pb-4">
         <CarouselHeader
-          title="Sale Picks for You"
+          title="Trending Near You"
           categories={categories}
           onCategorySelect={handleCategorySelect}
         />
