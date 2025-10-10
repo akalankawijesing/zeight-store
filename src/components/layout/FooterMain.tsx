@@ -1,5 +1,6 @@
 import React from 'react';
 import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin, CreditCard, Truck, Shield, RefreshCw } from 'lucide-react';
+import { ShopName, ShopAddress,ShopEmail,ShopPhone } from "@/config/shop";
 
 export default function FooterMain() {
   return (
@@ -52,7 +53,7 @@ export default function FooterMain() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Column */}
           <div className="space-y-6">
-            <h2 className="text-2xl font-light tracking-wider">FashionStore</h2>
+            <h2 className="text-2xl font-light tracking-wider">{ShopName}</h2>
             <p className="text-sm text-neutral-400 leading-relaxed">
               Timeless elegance meets contemporary design. Curating sophisticated fashion for the modern woman.
             </p>
@@ -153,19 +154,19 @@ export default function FooterMain() {
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-neutral-400 mt-1 flex-shrink-0" />
                 <span className="text-sm text-neutral-400">
-                  123 Fashion Street<br />New York, NY 10001
+                  {ShopAddress}
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-neutral-400 flex-shrink-0" />
-                <a href="tel:+1234567890" className="text-sm text-neutral-400 hover:text-white transition-colors duration-300">
-                  +1 (234) 567-890
+                <a href={`tel:${ShopPhone}`} className="text-sm text-neutral-400 hover:text-white transition-colors duration-300">
+                 {ShopPhone}
                 </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-neutral-400 flex-shrink-0" />
-                <a href="mailto:hello@desinelle.com" className="text-sm text-neutral-400 hover:text-white transition-colors duration-300">
-                  hello@desinelle.com
+                <a href={`mailto:${ShopEmail}`} className="text-sm text-neutral-400 hover:text-white transition-colors duration-300">
+                  {ShopEmail}
                 </a>
               </li>
             </ul>
@@ -193,7 +194,7 @@ export default function FooterMain() {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-neutral-400">
-              © 2025 Desinelle. All rights reserved.
+              © 2025 {ShopName}. All rights reserved.
             </p>
             <div className="flex items-center space-x-4">
               <span className="text-sm text-neutral-400">We accept:</span>

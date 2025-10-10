@@ -19,7 +19,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { useSession, signOut } from 'next-auth/react';
 import type { Session } from 'next-auth';
-
+import { ShopName} from "@/config/shop";
 // Mock stores for now
 const useCartStore = () => ({ 
   items: [], 
@@ -86,7 +86,7 @@ export function Header({ categorySelector }: HeaderProps) {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="text-2xl font-bold">
-              FashionStore
+             {ShopName}
             </Link>
           </div>
 
