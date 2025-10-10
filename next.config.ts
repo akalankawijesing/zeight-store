@@ -1,10 +1,22 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-      images:{
-    domains:['www.desinelle.com','n.nordstrommedia.com','images.unsplash.com']
-  }
+  images: {
+    domains: [
+      "www.desinelle.com",
+      "n.nordstrommedia.com",
+      "images.unsplash.com",
+    ],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/landing",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
