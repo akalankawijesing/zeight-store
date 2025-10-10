@@ -1,78 +1,7 @@
-// components/DualHeroSection.tsx
 "use client";
 
 import { useState, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import Image from "next/image";
-
-interface HeroPanelProps {
-  imageSrc: string;
-  altText: string;
-  heading: string;
-  buttonText: string;
-  buttonLink: string;
-}
-
-const HeroPanel: React.FC<HeroPanelProps> = ({
-  imageSrc,
-  altText,
-  heading,
-  buttonText,
-  buttonLink,
-}) => {
-  const isExternal = buttonLink.startsWith("http");
-
-  return (
-    <div className="relative w-full flex-shrink-0 min-h-[60vh] md:min-h-screen bg-cover bg-center group overflow-hidden">
-      <Image
-        src={imageSrc}
-        alt={altText}
-        fill
-        priority
-        className="object-cover transition-transform duration-500 group-hover:scale-105"
-        sizes="100vw"
-        quality={90}
-      />
-      <div className="absolute inset-0 bg-black/20 md:bg-black/30"></div>
-
-      <div className="relative z-10 flex flex-col justify-end items-center md:items-start h-full px-6 md:px-12 pb-12 md:pb-24 text-center md:text-left">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-white drop-shadow-lg mb-6 leading-tight max-w-4xl">
-          {heading}
-        </h2>
-        
-        {isExternal ? (
-          <a href={buttonLink} target="_blank" rel="noopener noreferrer">
-            <Button
-              variant="outline"
-              className="bg-transparent text-white border-white hover:bg-white hover:text-black transition-colors px-6 py-3 text-sm sm:text-base"
-            >
-              {buttonText}
-            </Button>
-          </a>
-        ) : (
-          <Link href={buttonLink}>
-            <Button
-              variant="outline"
-              className="bg-transparent text-white border-white hover:bg-white hover:text-black transition-colors px-6 py-3 text-sm sm:text-base"
-            >
-              {buttonText}
-            </Button>
-          </Link>
-        )}
-
-        {buttonText === "SHOP MAXI DRESSES" && (
-          <Link 
-            href="/start" 
-            className="mt-3 text-sm text-white underline hover:no-underline transition-opacity hover:opacity-80"
-          >
-            Start
-          </Link>
-        )}
-      </div>
-    </div>
-  );
-};
+import HeroPanel from "./HeroPanel";
 
 interface DualHeroSectionProps {
   panels?: HeroPanelProps[];
@@ -81,18 +10,20 @@ interface DualHeroSectionProps {
 const DualHeroSection: React.FC<DualHeroSectionProps> = ({ panels }) => {
   const defaultPanels: HeroPanelProps[] = [
     {
-      imageSrc: "/hero_img.jpg",
+      imageSrc: "/oleg-ivanov.jpg",
       altText: "Woman in black dress and grey jacket on a staircase.",
       heading: "Swish Sway Captivate",
       buttonText: "SHOP MAXI DRESSES",
       buttonLink: "https://uk.cupshe.com/collections/maxi-dresses",
+      objectPosition: "center",
     },
     {
-      imageSrc: "/hero_img_1.jpg",
+      imageSrc: "/khaled-ghareeb.jpg",
       altText: "Woman in white sweater and brown jacket outdoors.",
       heading: "Layering Aesthetics",
       buttonText: "SHOP LAYERING EDIT",
       buttonLink: "/layering-edit",
+      objectPosition: "center",
     },
   ];
 

@@ -25,7 +25,7 @@ export default function HeroSlider() {
   const desktopSlides: Slide[] = [
     {
       bg: "linear-gradient(135deg, #fdfbf7 0%, #f5f1e8 100%)",
-      img: "https://www.desinelle.com/storage/media/IzWNj3NsxWWne7yts6iCxzIOHNteBnbGOKTlTDGX.jpg",
+      img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2000",
       heading: "Summer Collection 2025",
       subheading: "Effortless elegance for every occasion",
       buttonText: "Shop Now",
@@ -34,7 +34,7 @@ export default function HeroSlider() {
     },
     {
       bg: "linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%)",
-      img: "https://www.desinelle.com/storage/media/zUdS1x58j4zGSPc1rJ5sNnWXZC1yFRkriNJLadgR.jpg",
+      img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2000",
       heading: "The Layering Edit",
       subheading: "Perfect pieces for transitional style",
       buttonText: "Explore Collection",
@@ -43,7 +43,7 @@ export default function HeroSlider() {
     },
     {
       bg: "#1a1a1a",
-      img: "https://www.desinelle.com/storage/media/PchiD34wwfWsWjtkbH7PN8Hsh9oiz4fbqqT1MogX.jpg",
+      img: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2000",
       heading: "Timeless Elegance",
       subheading: "Classic designs, modern sensibility",
       buttonText: "Discover More",
@@ -52,7 +52,7 @@ export default function HeroSlider() {
     },
     {
       bg: "#0a0a0a",
-      img: "/pexels-dhanno-18885577.jpg",
+      img: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2000",
       heading: "New Arrivals",
       subheading: "Fresh styles just landed",
       buttonText: "View Collection",
@@ -62,29 +62,41 @@ export default function HeroSlider() {
   ];
 
   const mobileSlides: Slide[] = [
-    {
-      bg: "linear-gradient(180deg, #c3b988 0%, #a89968 100%)",
-      img: "https://www.desinelle.com/storage/media/uM0vaxj0SSVK1uUZhN1X7YsfEqoAWWix2oPbu76b.jpg",
-      heading: "Summer Collection",
-      subheading: "Effortless style",
-      buttonText: "Shop",
+        {
+      bg: "linear-gradient(135deg, #fdfbf7 0%, #f5f1e8 100%)",
+      img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2000",
+      heading: "Summer Collection 2025",
+      subheading: "Effortless elegance for every occasion",
+      buttonText: "Shop Now",
       buttonLink: "/collections/maxi-dresses",
+      textPosition: "left",
     },
     {
-      bg: "linear-gradient(180deg, #e5cde1 0%, #d4b8d0 100%)",
-      img: "https://www.desinelle.com/storage/media/Tz2RO32RcjAJkgBYK1UF9VCGHPgrMEM8t9bxF2y4.jpg",
-      heading: "Layering Essentials",
-      subheading: "Perfect for every season",
-      buttonText: "Explore",
+      bg: "linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%)",
+      img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2000",
+      heading: "The Layering Edit",
+      subheading: "Perfect pieces for transitional style",
+      buttonText: "Explore Collection",
       buttonLink: "/collections/layering-edit",
+      textPosition: "center",
     },
     {
       bg: "#1a1a1a",
-      img: "https://www.desinelle.com/storage/media/s1mPbTK0qjbeB18Uj6AwcptrFVZGbmKjRefRrnPU.jpg",
-      heading: "Timeless Style",
-      subheading: "Classic meets modern",
-      buttonText: "Shop",
+      img: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2000",
+      heading: "Timeless Elegance",
+      subheading: "Classic designs, modern sensibility",
+      buttonText: "Discover More",
       buttonLink: "/collections/new-arrivals",
+      textPosition: "right",
+    },
+    {
+      bg: "#0a0a0a",
+      img: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2000",
+      heading: "New Arrivals",
+      subheading: "Fresh styles just landed",
+      buttonText: "View Collection",
+      buttonLink: "/collections/new",
+      textPosition: "center",
     },
   ];
 

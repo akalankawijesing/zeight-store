@@ -162,6 +162,16 @@ declare global {
     reviewCount?: number; // e.g., 154
     colors?: ColorSwatch[];
   }
+
+  interface HeroPanelProps {
+  imageSrc: string;
+  altText: string;
+  heading: string;
+  buttonText: string;
+  buttonLink: string;
+  objectPosition?: string;
+}
+
 }
 
 export {};

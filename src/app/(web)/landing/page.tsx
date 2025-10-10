@@ -3,6 +3,7 @@ import FashionGridSection from "@/components/layout/FashionGridSection";
 import HeroSlider from "@/components/layout/HeroSlider";
 import OfferBoxImage from "@/components/layout/OfferBoxImage";
 import OfferImageText from "@/components/layout/OfferImageText";
+import PromoBanner from "@/components/layout/PromoBanner";
 import ProductRecommendations from "@/components/product/ProductRecommendations";
 import TrendingNearYou from "@/components/product/TrendingNearYou";
 
@@ -17,12 +18,7 @@ export default async function Home() {
         alt="Makeup offer with 15-20% off on perfumes and nail polish"
       />
       <TrendingNearYou />
-      <OfferBoxImage
-        src="/Desktop_INTL_take2.webp"
-        width={2880}
-        height={348}
-        alt="Online beauty offer with 15-20% off on perfumes and nail polish"
-      />
+      <PromoBanner />
       <FashionGridSection />
       <DualHeroSection />
     </>

@@ -1,5 +1,6 @@
 import {Header} from "@/components/layout/Header";
 import { AuthProvider } from "@/app/auth/providers";
+import FooterMain from "@/components/layout/FooterMain";
 
 
 export default function MarketingLayout({
@@ -14,6 +15,7 @@ export default function MarketingLayout({
       <main className="flex-1">
         {children}
       </main>
+      <FooterMain/>
     </div>
   </AuthProvider>
   );
