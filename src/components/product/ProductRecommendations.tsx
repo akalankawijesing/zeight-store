@@ -128,7 +128,7 @@ export default function ProductRecommendations() {
   };
 
   return (
-    <section className="w-full h-fit bg-white font-sans flex flex-col border-8 border-gray-200">
+    <section className="w-full h-fit bg-white font-sans flex flex-col">
       <CustomStyles />
 
       {/* Header + categories */}

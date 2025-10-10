@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { ShoppingBag, Heart, Eye } from 'lucide-react';
 
 const FashionGridSection = () => {
@@ -82,10 +83,12 @@ const FashionGridSection = () => {
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Image */}
-              <img
+              <Image
                 src={item.image}
                 alt={item.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
               
               {/* Overlay */}

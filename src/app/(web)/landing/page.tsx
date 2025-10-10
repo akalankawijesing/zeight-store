@@ -1,7 +1,6 @@
 import DualHeroSection from "@/components/layout/DualHeroSection";
 import FashionGridSection from "@/components/layout/FashionGridSection";
 import HeroSlider from "@/components/layout/HeroSlider";
-import OfferBoxImage from "@/components/layout/OfferBoxImage";
 import OfferImageText from "@/components/layout/OfferImageText";
 import PromoBanner from "@/components/layout/PromoBanner";
 import ProductRecommendations from "@/components/product/ProductRecommendations";

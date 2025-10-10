@@ -73,7 +73,6 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
 
   return (
     <div className="relative w-full h-full">
-      {/* IMPORTANT: clip any overflow (prevents visual bleeding) */}
       <div className="absolute inset-0 pointer-events-none md:pointer-events-auto flex items-center justify-between px-4 md:px-12 z-20">
         <button
           type="button"
