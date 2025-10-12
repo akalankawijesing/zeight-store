@@ -8,8 +8,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 export function LoginForm() {
+    const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -21,6 +24,21 @@ export function LoginForm() {
   const onSubmit = async (data: LoginFormData) => {
     // Handle login logic
     console.log('Login data:', data);
+    try {
+      const res = await signIn('credentials', {
+        redirect: false,
+        email: data.email,
+        password: data.password,
+      });
+      if (res?.error) {
+        console.error('Login error:', res.error);
+      }
+      if (res?.ok) {
+        router.push('/');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+    }
   };
 
   return (

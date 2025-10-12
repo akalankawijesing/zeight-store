@@ -20,12 +20,20 @@ export function RegisterForm() {
   });
 
   const onSubmit = async (data: RegisterFormData) => {
+    
     try {
       // Your registration logic here
       console.log('Registration data:', data);
       
-      // After successful registration, redirect to login
-      router.push('/login?message=Account created successfully');
+         const res = await fetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      router.push('/auth/login');
+    }
     } catch (error) {
       console.error('Registration error:', error);
     }
@@ -40,14 +48,26 @@ export function RegisterForm() {
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Full Name</Label>
+            <Label htmlFor="name">First Name</Label>
             <Input
-              id="name"
-              placeholder="John Doe"
-              {...register('name')}
+              id="firstName"
+              placeholder="John"
+              {...register('firstName')}
             />
-            {errors.name && (
-              <p className="text-sm text-red-500">{errors.name.message}</p>
+            {errors.firstName && (
+              <p className="text-sm text-red-500">{errors.firstName.message}</p>
+            )}
+          </div>
+
+                    <div className="space-y-2">
+            <Label htmlFor="name">Last Name</Label>
+            <Input
+              id="lastName"
+              placeholder="Doe"
+              {...register('lastName')}
+            />
+            {errors.lastName && (
+              <p className="text-sm text-red-500">{errors.lastName.message}</p>
             )}
           </div>
 
