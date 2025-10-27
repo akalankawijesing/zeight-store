@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ShopName, ShopDescription } from "@/config/shop";
+import { Suspense } from "react";
+import Loader from "@/components/layout/Loader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +30,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Suspense fallback={<Loader />}>
         {children}
+        </Suspense>
       </body>
     </html>
   );
