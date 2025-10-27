@@ -14,20 +14,18 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginFormData } from "@/lib/validations/auth";
 import { signIn } from "next-auth/react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import SocialIconLogin from "./SocialIconLogin";
 import Image from "next/image";
 import { ShopName } from "@/config/shop";
+import { useRedirectUrl } from "@/hooks/useRedirectUrl";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const callbackUrl = searchParams.get("callbackUrl") || "/";
-  const authError = searchParams.get("error");
+  const { callbackUrl } = useRedirectUrl();
 
   const {
     register,

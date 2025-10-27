@@ -30,7 +30,7 @@ export default function UnauthorizedPage() {
         </h1>
         
         <p className="mb-8 text-lg text-gray-600">
-          You don't have permission to access this page.
+          You don&apos;t have permission to access this page.
         </p>
 
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">

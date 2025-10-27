@@ -119,7 +119,8 @@ const initialProducts: Product[] = [
     reviewCount: 185,
   },
 ];
-export default function productShowcase({productList,categoryList}: {productList:Product[],categoryList:Category[]}) {
+
+export default function ProductShowcase({productList,categoryList}: {productList:Product[],categoryList:Category[]}) {
   const [categories, setCategories] = useState<Category[]>(categoryList);
   const [products] = useState<Product[]>(productList);
 
