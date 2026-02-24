@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+
+<img src="https://img.shields.io/badge/zeight-store-6366f1?style=for-the-badge&logoColor=white" alt="Zeight Store"/>
+
+# 🛍️ Zeight Store
+
+**Modern e-commerce frontend built with TypeScript**
+
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md)
+
+[Overview](#overview) · [Features](#features) · [Getting Started](#getting-started) · [Screenshots](#screenshots) · [Contributing](#contributing)
+
+</div>
+
+---
+
+## Overview
+
+Zeight Store is a responsive, modern e-commerce web application. It connects to the [Zeight Backend](https://github.com/akalankawijesing/zeight-backend) API to deliver a complete shopping experience — from product browsing to checkout.
+
+> 🔗 **Live Demo:** [Coming Soon](#)
+
+## Features
+
+- 🛒 **Product Catalog** — Browse and filter products with ease
+- 🔍 **Search** — Real-time product search functionality
+- 🛍️ **Cart Management** — Add, remove, and update cart items
+- 👤 **User Authentication** — Register, login, and manage your account
+- 📱 **Fully Responsive** — Optimized for mobile, tablet, and desktop
+- ⚡ **Fast & Lightweight** — Optimized build for production
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Language | TypeScript |
+| Styling | CSS / Tailwind |
+| API | REST (Zeight Backend) |
+| Build | Vite / Webpack |
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js `v18+`
+- npm or yarn
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clone the repository
+git clone https://github.com/akalankawijesing/zeight-store.git
+cd zeight-store
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```env
+VITE_API_BASE_URL=http://localhost:3000/api
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Running the App
 
-## Learn More
+```bash
+# Development server
+npm run dev
 
-To learn more about Next.js, take a look at the following resources:
+# Production build
+npm run build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Preview production build
+npm run preview
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Screenshots
 
-## Deploy on Vercel
+| Page | Preview |
+|------|---------|
+| Home | *(screenshot)* |
+| Product | *(screenshot)* |
+| Cart | *(screenshot)* |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> Add screenshots to `/screenshots` folder and update this table.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── pages/          # Page-level components
+├── services/       # API calls
+├── store/          # State management
+├── types/          # TypeScript interfaces & types
+└── utils/          # Helper functions
+```
+
+## Related
+
+- 🔗 [Zeight Backend](https://github.com/akalankawijesing/zeight-backend) — API server
+
+## Contributing
+
+Pull requests are welcome! Open an issue first to discuss major changes.
+
+---
+
+<div align="center">
+  Made with ❤️ by <a href="https://github.com/akalankawijesing">Akalanka Wijesing</a>
+</div>
